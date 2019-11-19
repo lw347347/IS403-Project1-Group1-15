@@ -12,7 +12,7 @@ namespace IS403_Project1.Controllers
         {
             return View();
         }
-
+        // Random comment
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";
