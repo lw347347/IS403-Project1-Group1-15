@@ -76,5 +76,12 @@ namespace IS403_Project1.Controllers
                 return View(user);
             }
         }
-    }
+
+		[HttpGet]
+		public ActionResult Delete(int id)
+		{
+			listOfUsers.Remove(listOfUsers[id]);
+			return View("Index", listOfUsers);
+		}
+	}
 }
