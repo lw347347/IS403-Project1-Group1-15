@@ -54,7 +54,8 @@ namespace IS403_Project1.Controllers
 
                 // Forward them to the list index view
                 return View("Index", listOfSurveys);
-            } else
+            }
+			else
             {
                 // Return back the model to the view with errors
                 // Create the viewbag for the users
@@ -107,6 +108,33 @@ namespace IS403_Project1.Controllers
 		{
 			listOfSurveys.Remove(listOfSurveys[id]);
 			return View("Index", listOfSurveys);
+		}
+
+		[HttpGet]
+		public ActionResult ShowActiveOnly()
+		{
+			List<Survey> tempList = new List<Survey>();
+			foreach (var item in listOfSurveys)
+			{
+				if (item.IsActive)
+				{
+					tempList.Add(item);
+				}
+			}
+			return View("Index", tempList);
+		}
+
+		public ActionResult ShowInactiveOnly()
+		{
+			List<Survey> tempList = new List<Survey>();
+			foreach (var item in listOfSurveys)
+			{
+				if (!item.IsActive)
+				{
+					tempList.Add(item);
+				}
+			}
+			return View("Index", tempList);
 		}
     }
 }
