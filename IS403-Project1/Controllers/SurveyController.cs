@@ -42,9 +42,14 @@ namespace IS403_Project1.Controllers
         public ActionResult SurveysToComplete ()
         {
             int rndSurvey1 = rnd.Next(0, iNumSurveys);
-            int rndSurvey2 = rnd.Next(0, iNumSurveys);
+			int rndSurvey2;
+			do // loop ensures the smae survey is not listed twice
+			{
+				rndSurvey2 = rnd.Next(0, iNumSurveys);
+			}
+			while (rndSurvey1 == rndSurvey2);
 
-            ViewBag.RndSurvey1 = listOfSurveys[rndSurvey1].SurveyURL;
+			ViewBag.RndSurvey1 = listOfSurveys[rndSurvey1].SurveyURL;
             ViewBag.RndSurvey2 = listOfSurveys[rndSurvey2].SurveyURL;
             return View();
         }
