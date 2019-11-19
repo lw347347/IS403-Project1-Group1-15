@@ -101,5 +101,12 @@ namespace IS403_Project1.Controllers
                 return View(survey);
             }
         }
+
+		[HttpGet]
+		public ActionResult Delete(int id)
+		{
+			listOfSurveys.Remove(listOfSurveys[id]);
+			return View("Index", listOfSurveys);
+		}
     }
 }
