@@ -46,22 +46,24 @@ namespace IS403_Project1.Controllers
 
             // Select random surveys
             int rndSurvey1 = rnd.Next(0, iNumSurveys);
-            int rndSurvey2 = rnd.Next(0, iNumSurveys);
-            
-            // Make sure the second survey isn't the first
-            while (rndSurvey1 == rndSurvey2)
-            {
-                rndSurvey2 = rnd.Next(0, iNumSurveys);
-            }
-           
+            int rndSurvey2 = rnd.Next(0, iNumSurveys);   
 
-            // Add the surveys to the viewbag for the user to take
+            int rndSurvey2;
+            do // loop ensures the same survey is not listed twice
+            {
+              rndSurvey2 = rnd.Next(0, iNumSurveys);
+            }
+            while (rndSurvey1 == rndSurvey2);
+
+
+            // Add the surveys names to the viewbag for the user to take
             ViewBag.RndSurvey1Name = listOfSurveys[rndSurvey1].Name;
             ViewBag.RndSurvey2Name = listOfSurveys[rndSurvey2].Name;
 
-            // Send only the urls to open in a new windows
+            // Send only the urls to open in new windows
             ViewBag.RndSurvey1URL = listOfSurveys[rndSurvey1].SurveyURL;
             ViewBag.RndSurvey2URL = listOfSurveys[rndSurvey2].SurveyURL;
+
             return View();
         }
 
