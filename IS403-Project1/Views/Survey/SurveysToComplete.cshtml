@@ -4,5 +4,9 @@
 }
 
 <h2>Surveys To Complete</h2>
-<div>@Html.ViewBag.RndSurvey1</div>
-<div>@Html.ViewBag.RndSurvey2</div>
+<div>@Html.ViewBag.RndSurvey1Name @Html.Raw(ViewBag.RndSurvey1URL)</div>
+<div>@Html.ViewBag.RndSurvey2Name @Html.Raw(ViewBag.RndSurvey2URL)</div>
+
+<!-- Open the urls -->
+<script>openURL('@Html.Raw(ViewBag.RndSurvey1URL)')</script>
+<script>openURL('@Html.Raw(ViewBag.RndSurvey2URL)')</script>

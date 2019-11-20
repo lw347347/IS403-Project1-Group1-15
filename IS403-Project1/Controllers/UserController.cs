@@ -16,6 +16,18 @@ namespace IS403_Project1.Controllers
         // This will list all of the users
         public ActionResult Index()
         {
+            // Recount surveys for the list of users
+            foreach (User item in UserController.listOfUsers)
+            {
+                // Count the surveys that they have created
+                int iCount = SurveyController.listOfSurveys.Count(x => x.UserID == item.UserID);
+
+                // Find the user
+                int index = UserController.listOfUsers.FindIndex(x => x.UserID == item.UserID);
+
+                // Update their record to show how many surveys they have created
+                UserController.listOfUsers[index].CountOfSurveysCreated = iCount;
+            }
             return View(listOfUsers);
         }
 
@@ -80,6 +92,10 @@ namespace IS403_Project1.Controllers
 		[HttpGet]
 		public ActionResult Delete(int id)
 		{
+            // Find the right user
+            int index = listOfUsers.FindIndex(x => x.UserID == id);
+
+            // Pass the index to the listOfUsers to delete
 			listOfUsers.Remove(listOfUsers[id]);
 			return View("Index", listOfUsers);
 		}
