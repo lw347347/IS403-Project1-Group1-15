@@ -12,9 +12,9 @@ namespace IS403_Project1.Controllers
         // Add a list of surveys
         public static List<Survey> listOfSurveys = new List<Survey>()
         {
-            new Survey{SurveyID = 1, UserID = 1, Name = "First Survey", SurveyURL = "survey.com", IsActive = true },
-            new Survey{SurveyID = 2, UserID = 1, Name = "Second Survey", SurveyURL = "survey.com", IsActive = true },
-            new Survey{SurveyID = 3, UserID = 1, Name = "Third Survey", SurveyURL = "survey.com", IsActive = true }
+            new Survey{SurveyID = 1, UserID = 1, Name = "First Survey", SurveyURL = "https://survey.com/", IsActive = true },
+            new Survey{SurveyID = 2, UserID = 1, Name = "Second Survey", SurveyURL = "https://survey.com/", IsActive = true },
+            new Survey{SurveyID = 3, UserID = 1, Name = "Third Survey", SurveyURL = "https://survey.com/", IsActive = true }
         };
         
         //Have a count of list of surveys
@@ -41,11 +41,27 @@ namespace IS403_Project1.Controllers
 
         public ActionResult SurveysToComplete ()
         {
+            // Recount the number of surveys
+            iNumSurveys = listOfSurveys.Count();
+
+            // Select random surveys
             int rndSurvey1 = rnd.Next(0, iNumSurveys);
             int rndSurvey2 = rnd.Next(0, iNumSurveys);
+            
+            // Make sure the second survey isn't the first
+            while (rndSurvey1 == rndSurvey2)
+            {
+                rndSurvey2 = rnd.Next(0, iNumSurveys);
+            }
+           
 
-            ViewBag.RndSurvey1 = listOfSurveys[rndSurvey1].SurveyURL;
-            ViewBag.RndSurvey2 = listOfSurveys[rndSurvey2].SurveyURL;
+            // Add the surveys to the viewbag for the user to take
+            ViewBag.RndSurvey1Name = listOfSurveys[rndSurvey1].Name;
+            ViewBag.RndSurvey2Name = listOfSurveys[rndSurvey2].Name;
+
+            // Send only the urls to open in a new windows
+            ViewBag.RndSurvey1URL = listOfSurveys[rndSurvey1].SurveyURL;
+            ViewBag.RndSurvey2URL = listOfSurveys[rndSurvey2].SurveyURL;
             return View();
         }
 
@@ -57,22 +73,7 @@ namespace IS403_Project1.Controllers
             if (ModelState.IsValid)
             {
                 // add the received survey to the list of surveys
-                listOfSurveys.Add(survey);
-
-                // Recount surveys for the list of users
-                foreach(User item in UserController.listOfUsers)
-                {
-                    // Count the surveys that they have created
-                    int iCount = listOfSurveys.Count(x => x.UserID == item.UserID);
-                    
-                    // Find the user
-                    int index = UserController.listOfUsers.FindIndex(x => x.UserID == item.UserID);
-
-                    // Update their record to show how many surveys they have created
-                    UserController.listOfUsers[index].CountOfSurveysCreated = iCount;
-                }
-
-
+                listOfSurveys.Add(survey); 
 
                 return RedirectToAction("SurveysToComplete");
             } else
@@ -127,7 +128,11 @@ namespace IS403_Project1.Controllers
 		[HttpGet]
 		public ActionResult Delete(int id)
 		{
-			listOfSurveys.Remove(listOfSurveys[id]);
+            // Find the right survey
+            int index = listOfSurveys.FindIndex(x => x.SurveyID == id);
+
+            // Pass the index to the listOfSurveys to delete
+			listOfSurveys.Remove(listOfSurveys[index]);
 			return View("Index", listOfSurveys);
 		}
 
