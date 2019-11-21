@@ -19,8 +19,8 @@ namespace IS403_Project1.Models
         public string Name { get; set; }
 
         [Required]
-        [RegularExpression(@"https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]
-                            {1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)", ErrorMessage = "The url must be in the form" +
+        [RegularExpression(@"https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\
+            +~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)", ErrorMessage = "The url must be in the form" +
                             " of https://YOURURL.COM")]
         [Display(Name = "Survey URL")]
         public string SurveyURL { get; set; }

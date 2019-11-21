@@ -46,8 +46,6 @@ namespace IS403_Project1.Controllers
 
             // Select random surveys
             int rndSurvey1 = rnd.Next(0, iNumSurveys);
-            int rndSurvey2 = rnd.Next(0, iNumSurveys);   
-
             int rndSurvey2;
             do // loop ensures the same survey is not listed twice
             {
