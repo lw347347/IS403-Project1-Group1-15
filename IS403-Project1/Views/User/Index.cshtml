@@ -18,6 +18,9 @@
             @Html.DisplayNameFor(model => model.Email)
         </th>
         <th>
+            @Html.DisplayNameFor(model => model.CountOfSurveysCreated)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.CountOfSurveysCompleted)
         </th>
         <th></th>
@@ -32,10 +35,14 @@
             @Html.DisplayFor(modelItem => item.Email)
         </td>
         <td>
+            @Html.DisplayFor(modelItem => item.CountOfSurveysCreated)
+        </td>
+        <td>
             @Html.DisplayFor(modelItem => item.CountOfSurveysCompleted)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.UserID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.UserID }) |
             @Html.ActionLink("Delete", "Delete", new { id=item.UserID })
         </td>
     </tr>
