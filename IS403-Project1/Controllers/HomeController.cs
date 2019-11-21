@@ -27,5 +27,12 @@ namespace IS403_Project1.Controllers
 
             return View();
         }
+
+        public ActionResult TakeSurvey()
+        {
+            return View();
+        }
+
+    
     }
 }
