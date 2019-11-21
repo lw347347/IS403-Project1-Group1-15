@@ -1,6 +1,7 @@
 ﻿body {
-    padding-top: 50px;
-    padding-bottom: 20px;
+	padding-top: 50px;
+	padding-bottom: 20px;
+	background-image: url('Images/AdobeStock_127541998_2000x1335.jpg');
 }
 
 /* Set padding to keep content from hitting the edges */
@@ -21,4 +22,19 @@ input,
 select,
 textarea {
     max-width: 280px;
+}
+
+.row {
+	background-color: rgba(0, 0, 0, 0.71);
+	color: lightgray;
+	border-radius: 20px;
+	padding: 16px;
+}
+
+.jumbotron {
+	box-shadow: 5px 10px 18px #888888!important;
+}
+
+footer {
+	background-color: white;
 }
