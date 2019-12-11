@@ -11,6 +11,7 @@
         -->
     <script src="~/Content/customScripts.js"></script>
     <link href="~/Content/Site.css" rel="stylesheet" />
+    @Html.Partial(“_LoginPartial”)
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
@@ -25,9 +26,9 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
                     <li>@Html.ActionLink("Users", "Index", "User")</li>
                     <li>@Html.ActionLink("Surveys", "Index", "Survey")</li>
+                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
                 </ul>
             </div>
         </div>
