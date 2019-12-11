@@ -11,10 +11,10 @@
         -->
     <script src="~/Content/customScripts.js"></script>
     <link href="~/Content/Site.css" rel="stylesheet" />
-    @Html.Partial(“_LoginPartial”)
+   
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
+    <nav class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -30,9 +30,10 @@
                     <li>@Html.ActionLink("Surveys", "Index", "Survey")</li>
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
                 </ul>
+                @Html.Partial("_LoginPartial")
             </div>
         </div>
-    </div>
+    </nav>
     <div class="container body-content">
         @RenderBody()
         @*<hr />

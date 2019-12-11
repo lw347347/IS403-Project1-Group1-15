@@ -3,7 +3,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using Microsoft.Owin.Security.Cookies;
-using Microsoft.Owin.Security.Google;
+using Microsoft.Owin.Security.OAuth;
 using Owin;
 using IS403_Project1.Models;
 
@@ -54,9 +54,9 @@ namespace IS403_Project1
             //   consumerKey: "",
             //   consumerSecret: "");
 
-            //app.UseFacebookAuthentication(
-            //   appId: "",
-            //   appSecret: "");
+            app.UseFacebookAuthentication(
+               appId: "2671242452922549",
+               appSecret: "00b23118a2cab1689566b9e35bd85c10");
 
             //app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
             //{
@@ -64,14 +64,14 @@ namespace IS403_Project1
             //    ClientSecret = "IUtKFCto8fxVvH6A1pfdw2fL"
             //});
 
-            var google = new GoogleOAuth2AuthenticationOptions()
-            {
-                ClientId = "531377724806-fnpdbpbbkq4jogghirloimapvqnhlggh.apps.googleusercontent.com",
-                ClientSecret = "Mnw75p4OWIGSRQ3H8eFjZH7C",
-                Provider = new GoogleOAuth2AuthenticationProvider()
-            };
-            google.Scope.Add("email");
-            app.UseGoogleAuthentication(google);
+            //var google = new GoogleOAuth2AuthenticationOptions()
+            //{
+            //    ClientId = "531377724806-fnpdbpbbkq4jogghirloimapvqnhlggh.apps.googleusercontent.com",
+            //    ClientSecret = "Mnw75p4OWIGSRQ3H8eFjZH7C",
+            //    Provider = new GoogleOAuth2AuthenticationProvider()
+            //};
+            //google.Scope.Add("email");
+            //app.UseGoogleAuthentication(google);
 
 
         }
